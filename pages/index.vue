@@ -3,8 +3,8 @@
     <h1 class="mb-4">Usuários</h1>
     <textfield v-model="search" label="Pesquisar"></textfield>
     <v-row>
-      <v-col v-for="u in listFilter" :key="u.id" cols="12" md="6">
-        <user :item="u" />
+      <v-col v-for="(u, i) in listFilter" :key="u.id" cols="12" md="6">
+        <user :item="u" :not-be-deleted="i % 2 === 0" />
       </v-col>
     </v-row>
   </v-flex>
