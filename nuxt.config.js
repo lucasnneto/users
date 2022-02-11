@@ -72,6 +72,7 @@ export default {
   build: {},
   storybook: {
     decorators: [
+      // `<div data-app='true' class='v-application v-application--is-ltr theme--dark' id='app'><div class='v-application--wrap'><v-container class='pa-3'><story/></v-container></div></div>`,
       `<v-app><v-container class='pa-3'><story/></v-container></v-app>`,
     ],
   },
