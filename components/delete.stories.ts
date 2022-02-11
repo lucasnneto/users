@@ -1,13 +1,14 @@
 import Delete from './delete.vue';
 
 export default {
-  title: 'Icon Delete',
+  title: 'componentes/Icon Delete',
   component: Delete,
   decorators: [
     () => ({
       template: `<div style="height: 50px; display: flex; justify-content:center"><story /></div>`,
     }),
   ],
+  // https://storybook.js.org/docs/vue/essentials/controls#annotation
   argTypes: {
     color: {
       description: 'Seleção de cor do icone',

@@ -21,7 +21,7 @@
           {{ item.phone }}
         </h3>
       </div>
-      <v-btn v-if="!permanent" icon>
+      <v-btn v-if="!notBeDeleted" icon>
         <delete />
       </v-btn>
     </div>
@@ -34,7 +34,7 @@ import { User } from '@/store/data';
 export default Vue.extend({
   props: {
     item: Object as PropType<User>,
-    permanent: Boolean,
+    notBeDeleted: Boolean,
   },
 });
 </script>

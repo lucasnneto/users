@@ -1,8 +1,31 @@
 import User from './user.vue';
 
 export default {
-  title: 'User',
+  title: 'componentes/User',
   component: User,
+  parameters: {
+    docs: {
+      description: {
+        component: `Card utilizado na listagem de usuários`, // MARKDOWN
+      },
+    },
+  },
+  argTypes: {
+    item: {
+      description: `Objeto para complementar card
+      \`\`\`
+      {
+        "id":string,
+        "name":string,
+        "username":string,
+        "phone":string
+      }
+      \`\`\`  `,
+    },
+    notBeDeleted: {
+      description: `Permite que um card seja permanente`,
+    },
+  },
 };
 
 const Template = (_, { argTypes }) => ({
@@ -18,10 +41,28 @@ const user = {
 };
 
 export const Base = Template.bind({}) as any;
-Base.args = { item: user, permanent: false };
+Base.args = { item: user, notBeDeleted: false };
+Base.parameters = {
+  docs: {
+    source: {
+      code: `
+      <User :item="{'id':'1','name':'Nome','username':'user','phone':'1111'}" />
+      `,
+    },
+  },
+};
 
-export const Permanent = Template.bind({}) as any;
-Permanent.args = { ...Base.args, permanent: true };
-
-// export const Tertiary = Template.bind({}) as any;
-// Tertiary.args = { color: 'blue' };
+export const NotBeDeleted = Template.bind({}) as any;
+NotBeDeleted.args = { ...Base.args, notBeDeleted: true };
+NotBeDeleted.parameters = {
+  docs: {
+    source: {
+      code: `
+      <User
+      :item="{'id':'1','name':'Nome','username':'user','phone':'1111'}"
+      notBeDeleted
+    />
+      `,
+    },
+  },
+};
