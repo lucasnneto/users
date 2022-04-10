@@ -77,4 +77,7 @@ export default {
       `<v-app><v-container class='pa-3'><story/></v-container></v-app>`,
     ],
   },
+  generate: {
+    fallback: 'index.html',
+  },
 };

@@ -1,3 +1,4 @@
+import type { GetterTree, ActionTree } from 'vuex';
 import { http } from '@/service/index';
 
 export interface User {
@@ -29,7 +30,7 @@ export interface GetterBase<IState = void> {
   error: (state: IState) => boolean;
 }
 
-const getters: GetterBase<StadeBase> = {
+const getters: GetterTree<StadeBase, StadeBase> | GetterBase<StadeBase> = {
   loading: (state: StadeBase) => state.status === 'loading',
   error: (state: StadeBase) => state.status === 'error',
 };
@@ -39,9 +40,17 @@ const mutations = {
     Object.assign(state, payload);
   },
 };
+interface Actions {
+  CHANGE: (payload: StadeBase) => void;
+  GET_USERS: () => void;
+}
+export type ActionBase<
+  IState = void,
+  IRootState = void
+> = IRootState extends void ? Actions : ActionTree<IState, IRootState>;
 
-const actions = {
-  CHANGE({ commit }: any, payload: StadeBase) {
+const actions: ActionBase<StadeBase, StadeBase> = {
+  CHANGE({ commit }, payload: StadeBase) {
     commit('CHANGE', payload);
   },
   async GET_USERS({ commit }: any) {

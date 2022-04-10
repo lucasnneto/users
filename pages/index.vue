@@ -12,7 +12,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import { createNamespacedHelpers } from 'vuex';
-import { GetterBase, User } from '@/store/data';
+import { GetterBase, ActionBase, User } from '@/store/data';
 const { mapState, mapGetters, mapActions } = createNamespacedHelpers('data');
 export default Vue.extend({
   data() {
@@ -42,7 +42,7 @@ export default Vue.extend({
     this.GET_USERS();
   },
   methods: {
-    ...mapActions(['GET_USERS']),
+    ...(mapActions(['GET_USERS', 'CHANGE']) as ActionBase),
   },
 });
 </script>

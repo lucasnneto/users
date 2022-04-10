@@ -1,4 +1,4 @@
-import Vuex from 'Vuex';
+import Vuex from 'vuex';
 import Vue from 'vue';
 import store from '@/store/data';
 import Index from '@/pages/index.vue';
